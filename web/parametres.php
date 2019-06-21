@@ -2,7 +2,7 @@
 
 session_start();
 
-if((!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] === true) &&  $_SESSION["permissions"] === 1) {
+if((!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] === true) &&  $_SESSION["permissions"] !== 1) {
     header("location: index.php");
     exit;
 }
