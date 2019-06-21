@@ -16,6 +16,31 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `arrosage_jour`
+--
+
+DROP TABLE IF EXISTS `arrosage_jour`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `arrosage_jour` (
+  `id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `numero` smallint(1) NOT NULL,
+  `volume` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `arrosage_jour`
+--
+
+LOCK TABLES `arrosage_jour` WRITE;
+/*!40000 ALTER TABLE `arrosage_jour` DISABLE KEYS */;
+INSERT INTO `arrosage_jour` VALUES (1,1,3),(2,2,3),(3,3,0),(4,4,0);
+/*!40000 ALTER TABLE `arrosage_jour` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `jour`
 --
 
@@ -62,7 +87,7 @@ CREATE TABLE `trame` (
 
 LOCK TABLES `trame` WRITE;
 /*!40000 ALTER TABLE `trame` DISABLE KEYS */;
-INSERT INTO `trame` VALUES (1,'000000000');
+INSERT INTO `trame` VALUES (1,'110000000');
 /*!40000 ALTER TABLE `trame` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -103,4 +128,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-06-21 11:18:55
+-- Dump completed on 2019-06-21 15:52:46
