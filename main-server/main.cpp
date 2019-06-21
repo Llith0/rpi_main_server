@@ -214,10 +214,10 @@ void getData()
         cout << jEvp << endl;
         cout << jPrecipitation << endl;
 
-        cout << calculArrosage(surface1) <<endl;
-        cout << calculArrosage(surface2) <<endl;
-        cout << calculArrosage(surface3) <<endl;
-        cout << calculArrosage(surface4) <<endl;
+        connectBdd.prep_request("INSERT INTO arrosage_jour VALUES (NULL, 1, ?);",calculArrosage(surface1));
+        connectBdd.prep_request("INSERT INTO arrosage_jour VALUES (NULL, 2, ?);",calculArrosage(surface2));
+        connectBdd.prep_request("INSERT INTO arrosage_jour VALUES (NULL, 3, ?);",calculArrosage(surface3));
+        connectBdd.prep_request("INSERT INTO arrosage_jour VALUES (NULL, 4, ?);",calculArrosage(surface4));
 }
 
 void startTrame(string name, string trame, int surface, int ev)
@@ -423,7 +423,9 @@ int main(int argc, char* argv[])
     boost::thread p1(&pauseThread);
 
     //connexion a la base de donnees et met la valeur du nombre de litres d'eau qui ont ete utilise cette journee
-    //connectBdd.request("DROP TABLE IF EXISTS debit;");
+    connectBdd.request("DROP TABLE IF EXISTS arrosage_jour;");
+    connectBdd.request("CREATE TABLE IF NOT EXISTS arrosage_jour (id SMALLINT NOT NULL AUTO_INCREMENT,numero SMALLINT(1) NOT NULL,volume INT NOT NULL, PRIMARY KEY(id));");
+    
     //connectBdd.prep_request("INSERT INTO debit VALUES (NULL, ?);",12);
     
     //initialise le capteur du debit d'eau
