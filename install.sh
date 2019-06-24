@@ -40,7 +40,7 @@ sudo mysql -u root -e "GRANT ALL PRIVILEGES ON *.* TO 'aquatech'@'localhost' IDE
 
 g++ -o /home/pi/aquatech/rpi_main_server/main-server/thread /home/pi/aquatech/rpi_main_server/main-server/*.cpp -lboost_system -lboost_thread -lboost_chrono -lpthread -lwiringPi -lmysqlcppconn -lcurl
 
-mysql -u root -pAquatech123 aquatech < /home/pi/aquatech/bdd_dump.sql
+mysql -u root -pAquatech123 aquatech < /home/pi/aquatech/rpi_main_server/bdd_dump.sql
 
 sudo rm -r /var/www/html/*
 
@@ -50,7 +50,6 @@ sudo chmod 777 /home/pi/aquatech/rpi_main_server/web/evapotranspiration.csv
 sudo chmod 777 /home/pi/aquatech/rpi_main_server/web/pluviometrie.csv
 sudo chmod 777 /home/pi/aquatech/rpi_main_server/web/settings.json
 
-sudo -u pi bash -c 'crontab -l > mycron'
 sudo printf '0 20 * * * sudo bash -c "cd /home/pi/aquatech/main-server/ && ./thread"\n0 12 * * * /usr/bin/env python3 /home/pi/aquatech/meteo/test.py\n' > mycron
 crontab mycron
 rm -r mycron
